@@ -42,9 +42,9 @@ union{
 void setup()
 {
   distance_packet.data.terminator[0]='a';
-  distance_packet.data.terminator[0]='b';
-  distance_packet.data.terminator[0]='c';
-  distance_packet.data.terminator[0]='\n';
+  distance_packet.data.terminator[1]='b';
+  distance_packet.data.terminator[2]='c';
+  distance_packet.data.terminator[3]='\n';
   Serial.begin(115200);
   delay(1000);
   Serial.println("SparkFun VL53L5CX Imager Example");
@@ -64,7 +64,7 @@ void setup()
   imageResolution = myImager.getResolution(); //Query sensor for current resolution - either 4x4 or 8x8
   imageWidth = sqrt(imageResolution); //Calculate printing width
 
-  myImager.setRangingFrequency(5);
+  myImager.setRangingFrequency(60);
 
   // Attach the interrupt
   attachInterrupt(digitalPinToInterrupt(INT_PIN), interruptRoutine, FALLING);
